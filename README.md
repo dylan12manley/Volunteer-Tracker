@@ -1,12 +1,10 @@
-SpottyFried
+# Volunteer Tracker
 _This is an application made to track volunteers and their project using Ruby and SQL_
 By Dylan Manley
 
 ## Specs
 |Specs|Input|Output|
 |-|-|-|
-
-
 
 ## Known Bugs
 No known bugs
