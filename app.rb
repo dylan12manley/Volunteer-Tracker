@@ -32,3 +32,31 @@ get ('/projects/:id') do
   @project = Project.find(params[:id].to_i())
   erb(:project)
 end
+
+get('/projects/:id/edit') do
+
+end
+
+patch('/projects/:id') do
+
+end
+
+delete ('/projects/:id') do
+
+end
+
+get ('/projects/:id/:volunteer_id')do
+
+end
+
+post ('/projects/:id/:volunteer_id')do
+
+end
+
+patch('/projects/:id/:volunteer_id') do
+
+end
+
+delete('/projects/:id/:volunteer_id') do
+  
+end
