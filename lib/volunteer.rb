@@ -28,4 +28,28 @@ class Volunteer
      volunteers
    end
 
+   def save
+     result = DB.exec("INSERT INTO projects (name, project_id) VALUES ('#{@name}', #{@project_id}) RETURNING id;")
+     @id = result.first().fetch("id").to_i
+   end
+
+   # def self.find(id)
+   #   projects = DB.exec("SELECT * FROM projects WHERE id = #{id};").first
+   #   name = projects.fetch("name")
+   #   id = projects.fetch("id").to_i
+   #   Project.new({:name => name, :id => id})
+   # end
+
+  #  def update(attributes)
+  #    @name = attributes.fetch(:name)
+  #    # @id = projects.fetch("id").to_i
+  #    DB.exec("UPDATE projects SET name = '#{@name}' WHERE id = #{@id}")
+  #    # project = Project.new(attributes)
+  #  end
+  #
+  #  def delete
+  #   DB.exec("DELETE FROM projects WHERE id = #{@id};")
+  #   DB.exec("DELETE FROM volunteers WHERE project_id = #{@id};")
+  # end
+
  end
