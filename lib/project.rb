@@ -37,6 +37,7 @@ class Project
     @title = attributes.fetch(:title)
     # @id = projects.fetch("id").to_i
     DB.exec("UPDATE projects SET title = '#{@title}' WHERE id = #{@id}")
+    Project.new(attributes)
   end
 
 end
