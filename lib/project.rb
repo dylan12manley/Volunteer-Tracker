@@ -2,12 +2,12 @@ class Project
   attr_accessor :title, :id
 
   def initialize(attributes)
-    @title = attributes.fetch(:name)
+    @title = attributes.fetch(:title)
     @id = attributes.fetch(:id)
   end
 
   def ==(project_to_compare)
-    self.title() == project_to_compare.title()
+    @title == project_to_compare.title && @id == project_to_compare.id
   end
 
   def self.all
@@ -40,9 +40,22 @@ class Project
     # project = Project.new(attributes)
   end
 
+  def volunteers
+    # @id = project.fetch("id").to_i
+    # volunteer_array = []
+    # volunteers = DB.exec("SELECT * FROM volunteers WHERE project_id = #{@id}")
+    # volunteers.each() do | volunteer |
+    #   name = volunteer.fetch("name")
+    #   project_id = volunteer.fetch("project_id").to_i
+    #   id = volunteer.fetch("id").to_i
+    #   volunteer_array.push(Volunteer.new({:name => name, :project_id => project_id, :id => id}))
+    # end
+    Volunteer.find_by_project(self.id)
+  end
+
   def delete
-   DB.exec("DELETE FROM projects WHERE id = #{@id};")
-   DB.exec("DELETE FROM volunteers WHERE project_id = #{@id};")
- end
+    DB.exec("DELETE FROM projects WHERE id = #{@id};")
+    DB.exec("DELETE FROM volunteers WHERE project_id = #{@id};")
+  end
 
 end
