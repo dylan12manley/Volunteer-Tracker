@@ -2,12 +2,14 @@
 _This is an application made to track volunteers and their project using Ruby and SQL_
 By Dylan Manley
 
-## Specs
-|Specs|Input|Output|
-|-|-|-|
+## Setup Instructions
+
+* Open your browser
+* Enter https://arcane-sierra-29345.herokuapp.com in the url
+* Go to hosted app!
 
 ## Known Bugs
-No known bugs
+app cannot add new project yet.
 
 ## Support and contact details
 _Any questions, comments or contributions please contact Dylan Manley (dylan.manley@gmail.com)_

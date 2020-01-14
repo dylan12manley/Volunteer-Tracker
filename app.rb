@@ -9,23 +9,23 @@ also_reload('lib/**/*.rb')
 DB = PG.connect({:dbname => "volunteer_tracker"})
 
 get('/') do
-  erb(:projects)
+  redirect to '/projects'
 end
 
 get('/projects') do
-  @project = Project.all
+  @projects = Project.all
+  erb(:projects)
+end
+
+post ('/projects') do
+  title = params[:project_title]
+  project = Project.new({:title => title, :id => nil}).save
+  project.save()
   erb(:projects)
 end
 
 get ('/projects/new') do
   erb(:new_project)
-end
-
-post ('/projects') do
-  title = params[:project_title]
-  project = Project.new({:title => title, :id => nil})
-  project.save()
-  erb(:projects)
 end
 
 get ('/projects/:id') do
@@ -60,16 +60,16 @@ post ('/projects/:id/volunteers')do
   erb(:project)
 end
 
-patch('/projects/:id/volunteers/:id') do
-  @volunteer = Volunteer.find(params[:id].to_i())
-  @volunteer.update({:name => params[:name]})
-  project_name = params[:project_name]
-  erb(:project)
-end
-
-delete('/projects/:id/:volunteers/:id') do
-  @project = Project.find(params[:id].to_i())
-  @volunteer = Volunteer.find(params[:id].to_i())
-  @volunteer.delete()
-  erb(:project)
-end
+# patch('/projects/:id/volunteers/:id') do
+#   @volunteer = Volunteer.find(params[:id].to_i())
+#   @volunteer.update({:name => params[:name]})
+#   project_name = params[:project_name]
+#   erb(:project)
+# end
+#
+# delete('/projects/:id/:volunteers/:id') do
+#   @project = Project.find(params[:id].to_i())
+#   @volunteer = Volunteer.find(params[:id].to_i())
+#   @volunteer.delete()
+#   erb(:project)
+# end
