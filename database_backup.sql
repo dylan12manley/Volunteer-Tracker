@@ -25,18 +25,18 @@ SET default_table_access_method = heap;
 --
 
 CREATE TABLE public.projects (
-    title character varying,
-    id integer NOT NULL
+    id integer NOT NULL,
+    title character varying
 );
 
 
 ALTER TABLE public.projects OWNER TO postgres;
 
 --
--- Name: project_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: projects_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.project_id_seq
+CREATE SEQUENCE public.projects_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -45,13 +45,13 @@ CREATE SEQUENCE public.project_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.project_id_seq OWNER TO postgres;
+ALTER TABLE public.projects_id_seq OWNER TO postgres;
 
 --
--- Name: project_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: projects_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
-ALTER SEQUENCE public.project_id_seq OWNED BY public.projects.id;
+ALTER SEQUENCE public.projects_id_seq OWNED BY public.projects.id;
 
 
 --
@@ -59,19 +59,19 @@ ALTER SEQUENCE public.project_id_seq OWNED BY public.projects.id;
 --
 
 CREATE TABLE public.volunteers (
+    id integer NOT NULL,
     name character varying,
-    project_id integer,
-    id integer NOT NULL
+    project_id integer
 );
 
 
 ALTER TABLE public.volunteers OWNER TO postgres;
 
 --
--- Name: volunteer_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: volunteers_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.volunteer_id_seq
+CREATE SEQUENCE public.volunteers_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -80,34 +80,34 @@ CREATE SEQUENCE public.volunteer_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.volunteer_id_seq OWNER TO postgres;
+ALTER TABLE public.volunteers_id_seq OWNER TO postgres;
 
 --
--- Name: volunteer_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: volunteers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
-ALTER SEQUENCE public.volunteer_id_seq OWNED BY public.volunteers.id;
+ALTER SEQUENCE public.volunteers_id_seq OWNED BY public.volunteers.id;
 
 
 --
 -- Name: projects id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.projects ALTER COLUMN id SET DEFAULT nextval('public.project_id_seq'::regclass);
+ALTER TABLE ONLY public.projects ALTER COLUMN id SET DEFAULT nextval('public.projects_id_seq'::regclass);
 
 
 --
 -- Name: volunteers id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.volunteers ALTER COLUMN id SET DEFAULT nextval('public.volunteer_id_seq'::regclass);
+ALTER TABLE ONLY public.volunteers ALTER COLUMN id SET DEFAULT nextval('public.volunteers_id_seq'::regclass);
 
 
 --
 -- Data for Name: projects; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.projects (title, id) FROM stdin;
+COPY public.projects (id, title) FROM stdin;
 \.
 
 
@@ -115,38 +115,38 @@ COPY public.projects (title, id) FROM stdin;
 -- Data for Name: volunteers; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.volunteers (name, project_id, id) FROM stdin;
+COPY public.volunteers (id, name, project_id) FROM stdin;
 \.
 
 
 --
--- Name: project_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: projects_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.project_id_seq', 1, false);
-
-
---
--- Name: volunteer_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.volunteer_id_seq', 1, false);
+SELECT pg_catalog.setval('public.projects_id_seq', 1, false);
 
 
 --
--- Name: projects project_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: volunteers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.volunteers_id_seq', 1, false);
+
+
+--
+-- Name: projects projects_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.projects
-    ADD CONSTRAINT project_pkey PRIMARY KEY (id);
+    ADD CONSTRAINT projects_pkey PRIMARY KEY (id);
 
 
 --
--- Name: volunteers volunteer_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: volunteers volunteers_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.volunteers
-    ADD CONSTRAINT volunteer_pkey PRIMARY KEY (id);
+    ADD CONSTRAINT volunteers_pkey PRIMARY KEY (id);
 
 
 --
