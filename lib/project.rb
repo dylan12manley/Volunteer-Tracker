@@ -2,8 +2,8 @@ class Project
   attr_accessor :title, :id
 
   def initialize(attributes)
-    @title = attributes.fetch(:title)
-    @id = attributes.fetch(:id)
+    @title = attributes[:title]
+    @id = attributes[:id].to_i
   end
 
   def ==(project_to_compare)

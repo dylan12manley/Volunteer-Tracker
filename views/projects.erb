@@ -9,4 +9,12 @@
 <p>There are currently no projects to display.</p>
 <% end %>
 
+<form action="/projects" method="post">
+  <div class="form-group">
+    <label for="title">Project title</label>
+    <input id="title_input" name="title" class="form-control" type="text">
+  </div>
+  <button type="submit" class="danger">Create Project</button>
+</form>
+
 <a href="/projects/new">Add a new project</a>
