@@ -4,8 +4,12 @@ By Dylan Manley
 
 ## Setup Instructions
 
+* Open your terminal
+* enter "git clone https://github.com/dylan12manley/Volunteer-Tracker.git"
+* change directory into new project folder
+* enter "ruby app.rb" in the terminal
 * Open your browser
-* Enter https://arcane-sierra-29345.herokuapp.com in the url
+* Enter https://localhost:4567 in the url
 * Go to hosted app!
 
 ## Known Bugs
