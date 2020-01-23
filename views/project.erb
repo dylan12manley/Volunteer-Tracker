@@ -14,10 +14,11 @@
 
 <h4>Add a volunteer:</h4>
 
-<form action="/projects/<%= @project.id %>/volunteers" method="post">
+<form action="/projects/<%= @project.id %>" method="post">
   <div class="form-group">
-    <label for="name">Volunteer name</label>
-    <input id="name_input" name="name" class="form-control" type="text">
+    <label>volunteer_name
+    <input name="volunteer_name" type="text">
+    </label>
   </div>
   <button type="submit" class="danger ">Add Volunteer</button>
 </form>

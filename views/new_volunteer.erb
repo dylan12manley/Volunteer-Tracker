@@ -1,6 +1,6 @@
 <h1>Add a New Volunteer</h1>
 
-<form action="/projects/:id/volunteers" method="post">
+<form action="/projects/<%= @volunteer.project.id %>/volunteers" method="post">
   <div class="form-group">
     <label for="name">Volunteer Name</label>
     <input id="name_input" name="name" class="form-control" type="text">
