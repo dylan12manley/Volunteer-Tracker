@@ -34,9 +34,9 @@ class Volunteer
 
   def self.find(id)
     volunteers = DB.exec("SELECT * FROM volunteers WHERE id = #{id};").first
-    name = volunteers.fetch("name")
-    project_id = volunteers.fetch("project_id").to_i
-    id = volunteers.fetch("id").to_i
+    # name = volunteers.fetch("name")
+    # project_id = volunteers.fetch("project_id").to_i
+    # id = volunteers.fetch("id").to_i
     Volunteer.new({:name => name, :project_id => project_id, :id => id})
   end
 
@@ -52,8 +52,11 @@ class Volunteer
     volunteer_array
   end
 
-  def update(name)
-    @name = name
+  def update(attr)
+    if attr[:name] = nil
+      @name = attr[:name]
+    else @name = name
+    end
     DB.exec("UPDATE volunteers SET name = '#{@name}' WHERE id = #{@id};")
   end
 

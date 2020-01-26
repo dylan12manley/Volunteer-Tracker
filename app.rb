@@ -84,21 +84,22 @@ end
 
 patch('/projects/:id/volunteers') do
   @project = Project.find(params[:id].to_i())
-  Volunteer.find(params[:volunteer_id].to_i).update(:volunteer_name)
+  volunteer = Volunteer.find(params[:volunteer_id].to_i)
+  volunteer.update(:volunteer_name)
   redirect to "/projects/#{params[:id]}"
 end
-# patch('/projects/:id/volunteers/:volunteer_id') do
-#   @volunteer = Volunteer.find(params[:id].to_i())
-#   @volunteer.update({:name => params[:name]})
-#   project_name = params[:project_name]
-#   erb(:project)
-# end
+
+get ('/projects/:id/volunteers/:volunteer_id') do
+  @volunteer = Volunteer.find(params[:volunteer_id].to_i)
+  @project = Project.find(params[:id].to_i)
+  erb(:volunteers)
+end
 
 patch ('/projects/:id/volunteers/:volunteer_id') do
     # volunteer_name = params[:volunteer_name]
     @project = Project.find(params[:id].to_i())
-    Volunteer.find(params[:volunteer_id].to_i).update(:volunteer_name)
-    redirect to "/projects/#{params[:id]}"
+    Volunteer.find(params[:volunteer_id].to_i).update(params)
+    redirect to "/projects/#{params[:id]}/volunteers/#{params[:vol_id]}"
 end
 
 delete('/projects/:id/:volunteers/:volunteer_id') do
